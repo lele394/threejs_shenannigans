@@ -328,7 +328,7 @@ self.onmessage = function(e) {
 
 function Volume(x, y, z) {
 
-    const r = 5;
+    const r = 10;
 
     const distanceToOrigin = Math.sqrt(x * x + y * y + z * z);
     return distanceToOrigin <= r;
@@ -478,9 +478,7 @@ function createChunkTest(offset, Size) {
 
 
 
-                for (let i = 0; i < geometryData.vertices.length; i++) {
-                    geometryData.faces.push(i);
-                }
+
 
             
 
@@ -502,10 +500,11 @@ function createChunkTest(offset, Size) {
 
 
 
+    /*  careful to put that loop *outside* of the vertex creation*/
+    for (let i = 0; i < geometryData.vertices.length; i++) {
+        geometryData.faces.push(i);
+    }   
 
-
-
-    console.log(geometryData);
     return geometryData;
 }
 

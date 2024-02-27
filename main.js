@@ -54,7 +54,7 @@ Dilation is given by the 1/chunk_size
 
 */
 
-
+let MeshMade = 0;
 
 class Chunk {
     constructor(offset, Type) {
@@ -76,19 +76,48 @@ class Chunk {
             if (active_chunks.includes(this) ) {
                 const geometryData = e.data;
                 console.log(`chunk data for chunk ${this.offset} has been computed`, e.data);
+
+                
+                if (arrayEqual(geometryData.vertices, [])) {
+
+                    console.log(`chunk ${this.offset} is empty`);
+                    return
+                }
                 const geometry = this.convertGeometryDataToBufferGeometry(geometryData); // Convert geometry data to BufferGeometry
     
+
+
+
+
 
                 let material;
                 if (render_settings.wireframe == true) {
                     material = new THREE.MeshBasicMaterial({ wireframe: true, color: render_settings.wireframe_color });
                 } else {
-                    material = new THREE.MeshBasicMaterial({ color: render_settings.material_color });
-                    //material = new THREE.MeshStandardMaterial({ color: render_settings.material_color }); // test for shadows
+                    //material = new THREE.MeshBasicMaterial({ color: render_settings.material_color });
+                    /*
+                    material = new THREE.MeshStandardMaterial({
+                        color: 0xffffff, // Example color
+                        roughness: 0.5,   // Example roughness
+                        metalness: 0.5,   // Example metalness
+                    });*/
+                    
+                    
+                    material = new THREE.MeshNormalMaterial();
+                    
+                    
                 }
 
 
+
+
+
+
+
+
+
                 const mergedMesh = new THREE.Mesh(geometry, material);
+                MeshMade ++;
 
                 // Add the merged mesh to the scene or perform other actions as needed
                 scene.add(mergedMesh);
@@ -109,7 +138,9 @@ class Chunk {
         // Set attributes from geometryData to BufferGeometry
         geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(geometryData.vertices), 3));
         // Assuming that geometryData.faces contains face indices as a flat array
-        geometry.setIndex(geometryData.faces);
+
+        // geometry.setIndex(geometryData.faces); // Was causing an issue
+        geometry.computeVertexNormals();
         return geometry;
     }
     
@@ -215,8 +246,6 @@ function PositionChunkCreation(camera){
         let should_be_active = GetSphereOfChunks(curent_cam_pos, chunk_settings.loading_radius);
 
 
-        console.log(should_be_active);
-
 
         // loops through all the chunks that should be active
         should_be_active.forEach(active_pos => {
@@ -269,7 +298,7 @@ function PositionChunkCreation(camera){
 
 
 
-/* Depth buffer render */
+
 
 
 
@@ -286,25 +315,6 @@ document.getElementById("chunks_settings").innerHTML = `<br>Chunk settings<br>si
 
 
 
-// counts triangles in the scene
-function countTriangles(scene) {
-    let triangleCount = 0;
-
-    scene.traverse(function (object) {
-        if (object instanceof THREE.Mesh) {
-            const geometry = object.geometry;
-            if (geometry instanceof THREE.BufferGeometry) {
-                // For BufferGeometry, count the number of vertices divided by 3
-                triangleCount += geometry.attributes.position.count / 3;
-            } else if (geometry instanceof THREE.Geometry) {
-                // For Geometry, count the number of faces
-                triangleCount += geometry.faces.length;
-            }
-        }
-    });
-
-    return triangleCount;
-}
 
 
 
@@ -312,8 +322,9 @@ function countTriangles(scene) {
 
 
 
+//scene.add(new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshStandardMaterial()));
 
-
+console.log(new THREE.BoxGeometry(1, 1, 1));
 
 
 // single exec for marching cubes debug
@@ -323,20 +334,19 @@ PositionChunkCreation(camera);
 // render loop
 function animate() {
     stats.begin();
-	//requestAnimationFrame( animate );
+	requestAnimationFrame( animate );
 
     // Updates the chunks and load new ones 
     //PositionChunkCreation(camera);
 
 
-
-	//cube.rotation.x += 0.01;
-	//cube.rotation.y += 0.01;
-
     updateCamera(camera);
 
 	renderer.render( scene, camera );
     stats.end();
+
+    // tp lights on the camera
+    //light.position.set(camera.position.x, camera.position.y, camera.position.z);
 
     
 
@@ -347,16 +357,19 @@ function animate() {
 
     
     /* debug the number of meshes */
+    /*
     console.log(
         "n° of meshes : ",scene.children.filter(object => object instanceof THREE.Mesh).length,
         "n° of chunks : ", active_chunks.length,
-        "n° of triangles : ", countTriangles(scene),
-        renderer.info)
+        "n° of triangles : ", renderer.info.render.triangles,
+        "n° of lines : ", renderer.info.render.lines,
+        "MeshMade : ", MeshMade,
+        renderer.info)*/
 
     
 
 }
-document.addEventListener('keydown', (event) => animate(), false);
+//document.addEventListener('keydown', (event) => animate(), false);
 
 document.addEventListener('keydown', (event) => {if (event.key == 'v') {PositionChunkCreation(camera);}}, false);
 
