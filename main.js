@@ -1,7 +1,8 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js';
 
-import  {chunk_settings} from "./settings.js";
+import  {chunk_settings, render_settings} from "./settings.js";
 console.log(chunk_settings);
+console.log(render_settings);
 
 import { arrayEqual } from './src/tools.js';
 
@@ -77,11 +78,20 @@ class Chunk {
 
             if (active_chunks.includes(this) ) {
                 const geometryData = e.data;
-                console.log(`chunk data for chunk ${this.offset} has been computed`);
+                console.log(`chunk data for chunk ${this.offset} has been computed`, e.data);
                 const geometry = this.convertGeometryDataToBufferGeometry(geometryData); // Convert geometry data to BufferGeometry
     
-                const wireframeMaterial = new THREE.MeshBasicMaterial({ wireframe: true, color: 0xffffff });
-                const mergedMesh = new THREE.Mesh(geometry, wireframeMaterial);
+
+                let material;
+                if (render_settings.wireframe == true) {
+                    material = new THREE.MeshBasicMaterial({ wireframe: true, color: 0xffffff });
+                } else {
+                    material = new THREE.MeshBasicMaterial({ color: render_settings.material_color });
+                }
+
+
+                const mergedMesh = new THREE.Mesh(geometry, material);
+
                 // Add the merged mesh to the scene or perform other actions as needed
                 scene.add(mergedMesh);
                 // Set the merged mesh as this.cubes
@@ -300,7 +310,10 @@ function animate() {
     z_div.textContent = `z: ${Math.floor(camera.position.z*100)/100}`
 
     
+    /* debug the number of meshes */
+    console.log(scene.children.filter(object => object instanceof THREE.Mesh).length)
 
+    
 
 
 }

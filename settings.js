@@ -1,8 +1,16 @@
 const chunk_settings = {
 
-    chunk_size : 8,
+    chunk_size : 5,
     loading_radius: 2,
 
 };
 
-export {chunk_settings};
+
+const render_settings = {
+
+    wireframe: true,
+    material_color: 0x00ff00,
+
+};
+
+export {chunk_settings, render_settings};
