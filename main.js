@@ -90,23 +90,9 @@ class Chunk {
 
 
 
-                let material;
-                if (render_settings.wireframe == true) {
-                    material = new THREE.MeshBasicMaterial({ wireframe: true, color: render_settings.wireframe_color });
-                } else {
-                    //material = new THREE.MeshBasicMaterial({ color: render_settings.material_color });
-                    /*
-                    material = new THREE.MeshStandardMaterial({
-                        color: 0xffffff, // Example color
-                        roughness: 0.5,   // Example roughness
-                        metalness: 0.5,   // Example metalness
-                    });*/
-                    
-                    
-                    material = new THREE.MeshNormalMaterial();
-                    
-                    
-                }
+
+                const material = new THREE.MeshNormalMaterial( {wireframe: render_settings.wireframe} );
+
 
 
 
@@ -122,7 +108,6 @@ class Chunk {
                 // Add the merged mesh to the scene or perform other actions as needed
                 scene.add(mergedMesh);
                 // Set the merged mesh as this.cubes
-                //console.log(geometryData);
                 this.cubes = mergedMesh;
             }
             else {
@@ -211,7 +196,7 @@ let active_chunks = [
 
 ]
 
-function PositionChunkCreation(camera){
+function PositionChunkCreation(camera, Force=false){
     /* checks for the position of the camera. 
     If has moved from its previous chunk, creates new ones. */
 
@@ -223,21 +208,11 @@ function PositionChunkCreation(camera){
         Math.floor(camera.position.z/Size),
     ]
 
-    // console.log(curent_cam_pos);
-    // console.log(prev_cam_pos);
-    // console.log(arrayEqual(curent_cam_pos, prev_cam_pos));
-
 
     // compare the positions
-    if (!arrayEqual(curent_cam_pos, prev_cam_pos)) {
+    if (!arrayEqual(curent_cam_pos, prev_cam_pos) || Force) {
 
         console.log("different chunk detected");
-
-        /* Here the radius of creation is 1. Updating the list of all
-        chunks that should be active should do it. */
-
-
-
 
         // new active chunk list
         let new_active_chunks = []
@@ -345,10 +320,7 @@ function animate() {
 	renderer.render( scene, camera );
     stats.end();
 
-    // tp lights on the camera
-    //light.position.set(camera.position.x, camera.position.y, camera.position.z);
 
-    
 
     /* info panel stuff */
     x_div.textContent = `x: ${Math.floor(camera.position.x*100)/100}`
@@ -371,6 +343,18 @@ function animate() {
 }
 //document.addEventListener('keydown', (event) => animate(), false);
 
+
+// manual chunk check
 document.addEventListener('keydown', (event) => {if (event.key == 'v') {PositionChunkCreation(camera);}}, false);
+
+
+// wireframe toogle
+document.addEventListener('keydown', (event) => {if (event.key == 'w') { render_settings.wireframe = ! render_settings.wireframe;
+                                                                         active_chunks.forEach(chunk => {
+                                                                            chunk.remove()
+                                                                         });
+                                                                         active_chunks = [];
+                                                                         PositionChunkCreation(camera, true)}}, false);
+
 
 animate();

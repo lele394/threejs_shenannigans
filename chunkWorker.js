@@ -328,15 +328,50 @@ self.onmessage = function(e) {
 
 function Volume(x, y, z) {
 
+    /*
+    // This is for a sphere of radius r
     const r = 10;
-
     const distanceToOrigin = Math.sqrt(x * x + y * y + z * z);
-    return distanceToOrigin <= r;
+    return distanceToOrigin <= r;*/
+    
+    /*
+    //fancy little balls floating
+    const threshold = 0.5;
+    const dilation = .3;
+    return Math.cos(x*dilation)*Math.cos(y*dilation)*Math.cos(z*dilation) > threshold
+    */
+
+
+
+    const dilation = .02;
+    const threshold = 0.5;
+    return mandelbulb(x*dilation,y*dilation,z*dilation)> threshold;
+
+
+
 }
 
 
 
-
+function mandelbulb(x, y, z) {
+    let cx = x, cy = y, cz = z;
+    let dr = 1.5;
+    let r = 0, theta = 0, phi = 0;
+    const maxIterations = 16;
+    for (let i = 0; i < maxIterations && r < dr; i++) {
+        let rSquared = cx * cx + cy * cy + cz * cz;
+        theta = Math.acos(cz / Math.sqrt(rSquared));
+        phi = Math.atan2(cy, cx);
+        r = Math.pow(rSquared, 0.5);
+        let newR = Math.pow(r, 8);
+        theta *= 8;
+        phi *= 8;
+        cx = newR * Math.sin(theta) * Math.cos(phi) + x;
+        cy = newR * Math.sin(theta) * Math.sin(phi) + y;
+        cz = newR * Math.cos(theta) + z;
+    }
+    return r - dr;
+}
 
 
 
