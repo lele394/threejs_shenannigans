@@ -20,7 +20,7 @@ document.body.appendChild(stats.dom)
 
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 100 );
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
@@ -81,7 +81,7 @@ class Chunk {
 
                 let material;
                 if (render_settings.wireframe == true) {
-                    material = new THREE.MeshBasicMaterial({ wireframe: true, color: render_settings.wireframe_color });
+                    // material = new THREE.MeshBasicMaterial({ wireframe: true, color: 0xffffff });
                 } else {
                     material = new THREE.MeshBasicMaterial({ color: render_settings.material_color });
                     //material = new THREE.MeshStandardMaterial({ color: render_settings.material_color }); // test for shadows
@@ -270,7 +270,14 @@ function PositionChunkCreation(camera){
 
 
 /* Depth buffer render */
-
+const width = window.innerWidth;
+const height = window.innerHeight;
+const depthRenderTarget = new THREE.WebGLRenderTarget(width, height, {
+    format: THREE.DepthFormat,
+    depthBuffer: true,
+    stencilBuffer: false,
+});
+renderer.setRenderTarget(depthRenderTarget);
 
 
 
@@ -286,36 +293,6 @@ document.getElementById("chunks_settings").innerHTML = `<br>Chunk settings<br>si
 
 
 
-// counts triangles in the scene
-function countTriangles(scene) {
-    let triangleCount = 0;
-
-    scene.traverse(function (object) {
-        if (object instanceof THREE.Mesh) {
-            const geometry = object.geometry;
-            if (geometry instanceof THREE.BufferGeometry) {
-                // For BufferGeometry, count the number of vertices divided by 3
-                triangleCount += geometry.attributes.position.count / 3;
-            } else if (geometry instanceof THREE.Geometry) {
-                // For Geometry, count the number of faces
-                triangleCount += geometry.faces.length;
-            }
-        }
-    });
-
-    return triangleCount;
-}
-
-
-
-
-
-
-
-
-
-
-
 // single exec for marching cubes debug
 PositionChunkCreation(camera);
 
@@ -323,7 +300,7 @@ PositionChunkCreation(camera);
 // render loop
 function animate() {
     stats.begin();
-	//requestAnimationFrame( animate );
+	requestAnimationFrame( animate );
 
     // Updates the chunks and load new ones 
     //PositionChunkCreation(camera);
@@ -348,15 +325,14 @@ function animate() {
     
     /* debug the number of meshes */
     console.log(
-        "n° of meshes : ",scene.children.filter(object => object instanceof THREE.Mesh).length,
-        "n° of chunks : ", active_chunks.length,
-        "n° of triangles : ", countTriangles(scene),
-        renderer.info)
+        "number of meshes : ",scene.children.filter(object => object instanceof THREE.Mesh).length,
+        "number of chunks : ", active_chunks.length)
 
     
 
+
 }
-document.addEventListener('keydown', (event) => animate(), false);
+//document.addEventListener('keydown', (event) => animate(), false);
 
 document.addEventListener('keydown', (event) => {if (event.key == 'v') {PositionChunkCreation(camera);}}, false);
 
