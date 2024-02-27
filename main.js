@@ -26,10 +26,7 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-// const geometry = new THREE.BoxGeometry( .1, .1, .1 );
-// const material = new THREE.MeshBasicMaterial( { color: 0x00fff0 } );
-// const cube = new THREE.Mesh( geometry, material );
-// scene.add( cube );
+
 
 
 
@@ -60,7 +57,7 @@ Dilation is given by the 1/chunk_size
 
 
 class Chunk {
-    constructor(offset) {
+    constructor(offset, Type) {
         this.offset = offset;
         this.cubes = 0; // Initialize cubes property
         
@@ -71,7 +68,7 @@ class Chunk {
         let Size = chunk_settings.chunk_size;
 
         // Send a message to the worker with the offset
-        worker.postMessage({ offset, Size });
+        worker.postMessage({ offset, Size, Type });
 
         // Listen for messages from the worker
         worker.onmessage = (e) => {
@@ -234,7 +231,7 @@ function PositionChunkCreation(camera){
             });
 
             if (!IsIn) {
-                new_active_chunks.push(new Chunk(active_pos));
+                new_active_chunks.push(new Chunk(active_pos, "MC"));
             }
 
 
@@ -311,7 +308,9 @@ function animate() {
 
     
     /* debug the number of meshes */
-    //console.log(scene.children.filter(object => object instanceof THREE.Mesh).length)
+    console.log(
+        "number of meshes : ",scene.children.filter(object => object instanceof THREE.Mesh).length,
+        "number of chunks : ", active_chunks.length)
 
     
 

@@ -303,8 +303,21 @@ const TriangleTable = [
 
 
 self.onmessage = function(e) {
-    const { offset, Size } = e.data;
-    const cubes = createChunkTest(offset, Size);
+    /* Type is MC for marching cube or Points for grid point */
+    const { offset, Size, Type } = e.data;
+    let cubes;
+    
+    
+    if (Type == "MC") {
+        cubes = createChunkTest(offset, Size);
+    }
+
+    if (Type == "Points") {
+        cubes = createChunkAsAGrid(offset, Size);
+    }
+
+
+
     self.postMessage(cubes);
 };
 
@@ -421,7 +434,7 @@ function createChunkTest(offset, Size) {
                 // Convert the binary string to an integer
                 /*
                 Turns out we need to flip the binary array as the map is reversed for the binary number
-                
+
                  */
                 const configIndex = parseInt(binaryString.split('').reverse().join(''), 2);
 
@@ -453,9 +466,9 @@ function createChunkTest(offset, Size) {
 
 
                         geometryData.vertices.push(
-                            interpolated_point[0]+(offset[0]*Size),
+                            interpolated_point[2]+(offset[2]*Size),
                             interpolated_point[1]+(offset[1]*Size),
-                            interpolated_point[2]+(offset[2]*Size));
+                            interpolated_point[0]+(offset[0]*Size));
                     
                     }
                     
@@ -524,9 +537,9 @@ function createChunkAsAGrid(offset, Size) {
                 // Define vertices of tetrahedron
                 let vertices = [
                     [0, 0, 0],
-                    [.1, 0, 0],
-                    [0, .1, 0],
-                    [0, 0, .1]
+                    [.05, 0, 0],
+                    [0, .05, 0],
+                    [0, 0, .05]
                 ];
 
                 // Define faces of tetrahedron

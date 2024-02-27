@@ -8,8 +8,11 @@ const chunk_settings = {
 
 const render_settings = {
 
-    wireframe: true,
+    wireframe: false,
+    wireframe_color: 0xffffff,
+
     material_color: 0x00ff00,
+    grid_color: 0xff0000,
 
 };
 
