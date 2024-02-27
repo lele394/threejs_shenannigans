@@ -290,7 +290,7 @@ function animate() {
 	requestAnimationFrame( animate );
 
     // Updates the chunks and load new ones 
-    // PositionChunkCreation(camera);
+    //PositionChunkCreation(camera);
 
 
 
@@ -311,7 +311,7 @@ function animate() {
 
     
     /* debug the number of meshes */
-    console.log(scene.children.filter(object => object instanceof THREE.Mesh).length)
+    //console.log(scene.children.filter(object => object instanceof THREE.Mesh).length)
 
     
 
