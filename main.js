@@ -21,7 +21,7 @@ document.body.appendChild(stats.dom)
 
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 100 );
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
@@ -87,12 +87,13 @@ class Chunk {
                 const geometry = this.convertGeometryDataToBufferGeometry(geometryData); // Convert geometry data to BufferGeometry
     
 
-
+                console.log(geometry)
 
 
 
 
                 const material = new THREE.MeshNormalMaterial( {wireframe: render_settings.wireframe} );
+                //const material = new THREE.MeshDepthMaterial( {wireframe: render_settings.wireframe} );
 
 
 
@@ -125,9 +126,19 @@ class Chunk {
         geometry.setAttribute('position', new THREE.BufferAttribute(new Float32Array(geometryData.vertices), 3));
         // Assuming that geometryData.faces contains face indices as a flat array
 
-        // geometry.setIndex(geometryData.faces); // Was causing an issue
+
+
         geometry.computeVertexNormals();
-        return geometry;
+
+        console.log(geometryData.faces)
+        geometry.setIndex(geometryData.faces); // Was causing an issue
+        /* See if i can't offload that to the worker one day. 
+        Turns out it's not that great, renders triangles flipped*/
+        
+        
+        
+        
+         return geometry;
     }
     
 
@@ -313,7 +324,7 @@ function animate() {
 	requestAnimationFrame( animate );
 
     // Updates the chunks and load new ones 
-    //PositionChunkCreation(camera);
+    PositionChunkCreation(camera);
 
 
     updateCamera(camera);

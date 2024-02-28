@@ -1,14 +1,14 @@
 const chunk_settings = {
 
     chunk_size : 10,
-    loading_radius: 5,
+    loading_radius: 2,
 
 };
 
 
 const render_settings = {
 
-    wireframe: true,
+    wireframe: false,
     wireframe_color: 0xffffff,
 
     material_color: 0x00ff00,

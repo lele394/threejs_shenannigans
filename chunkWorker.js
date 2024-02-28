@@ -328,25 +328,30 @@ self.onmessage = function(e) {
 
 function Volume(x, y, z) {
 
-    /*
-    // This is for a sphere of radius r
-    const r = 10;
-    const distanceToOrigin = Math.sqrt(x * x + y * y + z * z);
-    return distanceToOrigin <= r;*/
     
+    // This is for a sphere of radius r
+
     /*
+    const r = 2;   
+    const distanceToOrigin = Math.sqrt(x * x + y * y + z * z);
+    return distanceToOrigin <= r;
+    */
+    
+    
     //fancy little balls floating
     const threshold = 0.5;
     const dilation = .3;
     return Math.cos(x*dilation)*Math.cos(y*dilation)*Math.cos(z*dilation) > threshold
+    /*
     */
+    
 
 
-
+    /*
     const dilation = .02;
     const threshold = 0.5;
     return mandelbulb(x*dilation,y*dilation,z*dilation)> threshold;
-
+*/
 
 
 }
@@ -415,12 +420,11 @@ function createChunkTest(offset, Size) {
 
     // loop for the marching cube algo
     //off just for quickfix control on the loop
-    off = 0;
 
     geometry_offset = 0;
-    for (let x = 0; x < Size-off; x++) {
-        for (let y = 0; y < Size-off; y++) {
-            for (let z = 0; z < Size-off; z++) {
+    for (let x = 0; x < Size; x++) {
+        for (let y = 0; y < Size; y++) {
+            for (let z = 0; z < Size; z++) {
                 
                 /* Marching cube here, yes yes */
 
@@ -501,9 +505,10 @@ function createChunkTest(offset, Size) {
 
 
                         geometryData.vertices.push(
-                            interpolated_point[2]+(offset[2]*Size),
+                            interpolated_point[0]+(offset[0]*Size),
                             interpolated_point[1]+(offset[1]*Size),
-                            interpolated_point[0]+(offset[0]*Size));
+                            interpolated_point[2]+(offset[2]*Size),
+                            );
                     
                     }
                     
@@ -534,10 +539,14 @@ function createChunkTest(offset, Size) {
 
 
 
-
     /*  careful to put that loop *outside* of the vertex creation*/
-    for (let i = 0; i < geometryData.vertices.length; i++) {
-        geometryData.faces.push(i);
+    /* turns out generating the faces is useless since it's redone in main.js
+        Impact on performance, but oh well.*/
+    
+    for (let i = 0; i < geometryData.vertices.length/3; i++) {
+        geometryData.faces.push(i*3+2);
+        geometryData.faces.push(i*3+1);
+        geometryData.faces.push(i*3);
     }   
 
     return geometryData;
