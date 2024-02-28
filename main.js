@@ -68,15 +68,15 @@ class Chunk {
         console.log(`adding chunk ${this.offset}`);
         // Create a Web Worker instance
         this.worker = new Worker('chunkWorker.js');
+        RunningChunkWorkers ++; // increment number of running workers
 
         let Size = chunk_settings.chunk_size;
 
-        RunningChunkWorkers ++; // increment number of running workers
         // Send a message to the worker with the offset
-        worker.postMessage({ offset, Size, Type });
+        this.worker.postMessage({ offset, Size, Type });
 
         // Listen for messages from the worker
-        worker.onmessage = (e) => {
+        this.worker.onmessage = (e) => {
             RunningChunkWorkers --;
 
             if (active_chunks.includes(this) ) {
@@ -122,6 +122,7 @@ class Chunk {
                 console.log(`chunk data for chunk ${this.offset} has been computed but is already destroyed, skipping instanciation`);
             }
             
+            this.worker.terminate()
         };
     }
 
@@ -154,6 +155,7 @@ class Chunk {
         if (this.cubes == 0) {
             console.log(`removing chunk ${this.offset} but it has no mesh, still stuck in worker`);
             this.worker.terminate();
+            RunningChunkWorkers --; // since it's cancelled, decrease
 
         }
 
