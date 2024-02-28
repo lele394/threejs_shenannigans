@@ -326,7 +326,7 @@ console.log(new THREE.BoxGeometry(1, 1, 1));
 
 
 // single exec for marching cubes debug
-PositionChunkCreation(camera);
+// PositionChunkCreation(camera);
 
 
 // render loop
@@ -335,7 +335,9 @@ function animate() {
 	requestAnimationFrame( animate );
 
     // Updates the chunks and load new ones 
-    PositionChunkCreation(camera);
+    if (chunk_settings.auto_update) {
+        PositionChunkCreation(camera);
+    }
 
 
     updateCamera(camera, keyboard);
@@ -455,7 +457,15 @@ keyboard_switch.addEventListener("click", function() {
 
 
     console.log(`Switching keyboard to `, keyboard);
+});
 
 
 
+
+// enables/disables automatic chunk check
+
+const html_auto_update = document.getElementById('chunk-check');
+html_auto_update.addEventListener('change', function() {
+    chunk_settings.auto_update = html_auto_update.checked;
+    console.log(`Setting auto chunk update to ${chunk_settings.auto_update}`)
 });

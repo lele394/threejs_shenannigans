@@ -2,6 +2,7 @@ const chunk_settings = {
 
     chunk_size : 8,
     loading_radius: 1,
+    auto_update: false,
 
 };
 
