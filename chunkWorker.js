@@ -339,18 +339,18 @@ function Volume(x, y, z) {
     
     
     //fancy little balls floating
+    /*
     const threshold = 0.5;
     const dilation = .3;
     return Math.cos(x*dilation)*Math.cos(y*dilation)*Math.cos(z*dilation) > threshold
-    /*
     */
     
 
 
-    /*
-    const dilation = .02;
-    const threshold = 0.5;
-    return mandelbulb(x*dilation,y*dilation,z*dilation)> threshold;
+   const dilation = .02;
+   const threshold = 0;
+   return mandelbulb(x*dilation,y*dilation,z*dilation)> threshold;
+   /*
 */
 
 

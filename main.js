@@ -29,6 +29,7 @@ document.body.appendChild( renderer.domElement );
 
 
 
+let RunningChunkWorkers = 0;
 
 
 
@@ -68,11 +69,13 @@ class Chunk {
 
         let Size = chunk_settings.chunk_size;
 
+        RunningChunkWorkers ++; // increment number of running workers
         // Send a message to the worker with the offset
         worker.postMessage({ offset, Size, Type });
 
         // Listen for messages from the worker
         worker.onmessage = (e) => {
+            RunningChunkWorkers --;
 
             if (active_chunks.includes(this) ) {
                 const geometryData = e.data;
@@ -295,6 +298,7 @@ function PositionChunkCreation(camera, Force=false){
 const x_div = document.getElementById("x")
 const y_div = document.getElementById("y")
 const z_div = document.getElementById("z")
+const workers = document.getElementById("workers")
 
 //set the info n check settings
 document.getElementById("chunks_settings").innerHTML = `<br>Chunk settings<br>size: ${chunk_settings.chunk_size}<br>radius: ${chunk_settings.loading_radius}`
@@ -338,6 +342,13 @@ function animate() {
     x_div.textContent = `x: ${Math.floor(camera.position.x*100)/100}`
     y_div.textContent = `y: ${Math.floor(camera.position.y*100)/100}`
     z_div.textContent = `z: ${Math.floor(camera.position.z*100)/100}`
+
+    workers.textContent = `Active loaders : ${RunningChunkWorkers}`
+    if (RunningChunkWorkers == 0) {
+        workers.style.color = "green"
+    } else {
+        workers.style.color = "red"
+    }
 
     
     /* debug the number of meshes */
