@@ -1,11 +1,13 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js';
 
-import  {chunk_settings, render_settings} from "./settings.js";
+import  {chunk_settings, render_settings, keyboard_settings} from "./settings.js";
 console.log(chunk_settings);
 console.log(render_settings);
 
-import { arrayEqual } from './src/tools.js';
+// set keyboard to AZERTY
+let keyboard = keyboard_settings.AZERTY;
 
+import { arrayEqual } from './src/tools.js';
 
 import Stats from 'https://cdnjs.cloudflare.com/ajax/libs/stats.js/17/Stats.js'
 
@@ -331,7 +333,7 @@ function animate() {
     PositionChunkCreation(camera);
 
 
-    updateCamera(camera);
+    updateCamera(camera, keyboard);
 
 	renderer.render( scene, camera );
     stats.end();
@@ -375,7 +377,7 @@ document.addEventListener('keydown', (event) => {if (event.key == 'v') {active_c
 
 
 // wireframe toogle
-document.addEventListener('keydown', (event) => {if (event.key == 'w') { render_settings.wireframe = ! render_settings.wireframe;
+document.addEventListener('keydown', (event) => {if (event.key == 'x') { render_settings.wireframe = ! render_settings.wireframe;
                                                                          active_chunks.forEach(chunk => {
                                                                             chunk.remove()
                                                                          });
@@ -431,3 +433,24 @@ button.addEventListener("click", function() {
 });
 
 
+
+// Keyboard switch
+const html_keyboard_text = document.getElementById("keyboard");
+const keyboard_switch = document.getElementById("Keyboard-switch");
+keyboard_switch.addEventListener("click", function() {
+
+    if (keyboard === keyboard_settings.AZERTY) {
+        keyboard = keyboard_settings.QWERTY
+        html_keyboard_text.innerHTML = "QWERTY"
+
+    } else {
+        keyboard = keyboard_settings.AZERTY
+        html_keyboard_text.innerHTML = "AZERTY"
+    }
+
+
+    console.log(`Switching keyboard to `, keyboard);
+
+
+
+});

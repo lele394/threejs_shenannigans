@@ -16,4 +16,32 @@ const render_settings = {
 
 };
 
-export {chunk_settings, render_settings};
+
+
+const keyboard_settings =  {
+    AZERTY : {
+        up : "r",
+        down : "f",
+        right : "d",
+        left : "q",
+        front : "z",
+        back : "s",
+        r_right :"e",
+        r_left : "a"
+    },
+
+    QWERTY : {
+        up : "r",
+        down : "f",
+        right : "d",
+        left : "a",
+        front : "w",
+        back : "s",
+        r_right :"e",
+        r_left : "q"
+    }
+}
+
+
+
+export {chunk_settings, render_settings, keyboard_settings};
