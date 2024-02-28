@@ -380,4 +380,51 @@ document.addEventListener('keydown', (event) => {if (event.key == 'w') { render_
                                                                          PositionChunkCreation(camera, true)}}, false);
 
 
-animate();
+
+
+// Open/close the parameter menu
+document.addEventListener('keydown', (event) => {if (event.code == "Space") {let panel = document.getElementById("parameters-panel").style; 
+                                                                             if (panel.display == "none") {
+                                                                                panel.display = "";
+                                                                             } else {
+                                                                                panel.display = "none";
+                                                                             } 
+                                                                            }}, false);
+
+
+
+
+                                                                        
+// Chunk size value update
+const html_chunk_size = document.getElementById("chunk-size");
+html_chunk_size.addEventListener("input", function() {
+
+    chunk_settings.chunk_size = Math.floor(html_chunk_size.value); // avoid non integers
+    
+    console.log("Update chunk size:", chunk_settings.chunk_size);
+    document.getElementById("chunks_settings").innerHTML = `<br>Chunk settings<br>size: ${chunk_settings.chunk_size}<br>radius: ${chunk_settings.loading_radius}`
+});
+
+// Chunk radius value update
+const html_chunk_radius = document.getElementById("chunk-radius");
+html_chunk_radius.addEventListener("input", function() {
+
+    chunk_settings.loading_radius = Math.floor(html_chunk_radius.value); // avoid non integers
+
+    console.log("Update chunk size:", chunk_settings.loading_radius);
+    document.getElementById("chunks_settings").innerHTML = `<br>Chunk settings<br>size: ${chunk_settings.chunk_size}<br>radius: ${chunk_settings.loading_radius}`
+});
+
+
+
+// start the generation button
+const button = document.getElementById("start_generation");
+button.addEventListener("click", function() {
+    console.log("Starting generation");
+
+    button.disabled = true; // disables button so people don't start the rendering a thousand times
+    
+    animate();
+});
+
+

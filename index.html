@@ -32,5 +32,51 @@
 			<div id="chunks_settings"></div>
 			<div id="workers">Active loaders : </div>
 		</div>
+
+
+
+		<div id="parameters-panel"style="	position: absolute;
+											right: 15%;
+											top: 15%;
+											width: 70%;
+											height: 70%;
+											padding: 10px;
+											outline: white solid 1px;
+											background-color: rgba(1, 22, 66, 0.76);
+											color: white;">
+			
+			<div>
+				A chunk size of 10 with a radius of 4 seems to give good result. <br>
+				Make sure your system can run it by slowly incrementing values. <br> 
+				I don't recommend going past 5 radius and 10 size. <br>
+				setup running fine : mozilla firefox, i5-10400, gtx 1660s. <br>
+				<br>
+				Should run well on most computers, granted the chunk sizes and radius stays reasonnable.
+			</div>
+				<br>
+			<label for="chunk-size">Set chunk size:</label>
+			<input type="number" id="chunk-size" name="integer-input" min="0" step="1"> avoid changing this during runtime <br>
+
+			<label for="chunk-radius">Set chunk radius: </label>
+			<input type="number" id="chunk-radius" name="integer-input" min="0" step="1"> avoid changing this during runtime<br>
+
+			<br>
+			<div>
+				Nothing is starting until you press that button. Check your parameters!
+			</div>
+			<button id="start_generation">Start generation</button>
+			<div>
+				<br>
+				You can press Space to close/open that window. 
+			</div>
+
+
+
+
+
+		</div>
+
+
+
 	</body>
 </html>
