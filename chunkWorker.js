@@ -348,7 +348,7 @@ function Volume(x, y, z) {
 
 
    const dilation = .02;
-   const threshold = 0;
+   const threshold = 0.5;
    return mandelbulb(x*dilation,y*dilation,z*dilation)> threshold;
    /*
 */
