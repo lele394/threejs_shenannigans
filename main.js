@@ -368,7 +368,10 @@ function animate() {
 
 
 // manual chunk check
-document.addEventListener('keydown', (event) => {if (event.key == 'v') {PositionChunkCreation(camera);}}, false);
+document.addEventListener('keydown', (event) => {if (event.key == 'v') {active_chunks.forEach(chunk => {
+                                                                            chunk.remove()
+                                                                        });
+                                                                        PositionChunkCreation(camera, true);}}, false);
 
 
 // wireframe toogle
