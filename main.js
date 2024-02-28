@@ -67,7 +67,7 @@ class Chunk {
         
         console.log(`adding chunk ${this.offset}`);
         // Create a Web Worker instance
-        const worker = new Worker('chunkWorker.js');
+        this.worker = new Worker('chunkWorker.js');
 
         let Size = chunk_settings.chunk_size;
 
@@ -87,6 +87,7 @@ class Chunk {
                 if (arrayEqual(geometryData.vertices, [])) {
 
                     console.log(`chunk ${this.offset} is empty`);
+                    this.cubes = 1;
                     return
                 }
                 const geometry = this.convertGeometryDataToBufferGeometry(geometryData); // Convert geometry data to BufferGeometry
@@ -152,6 +153,8 @@ class Chunk {
         console.log(`removing chunk ${this.offset}`);
         if (this.cubes == 0) {
             console.log(`removing chunk ${this.offset} but it has no mesh, still stuck in worker`);
+            this.worker.terminate();
+
         }
 
 
