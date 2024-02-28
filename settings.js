@@ -1,7 +1,7 @@
 const chunk_settings = {
 
-    chunk_size : 10,
-    loading_radius: 4,
+    chunk_size : 8,
+    loading_radius: 1,
 
 };
 
