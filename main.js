@@ -429,13 +429,15 @@ html_chunk_radius.addEventListener("input", function() {
 
 
 
+
+
 // start the generation button
 const button = document.getElementById("start_generation");
 button.addEventListener("click", function() {
     console.log("Starting generation");
 
     button.disabled = true; // disables button so people don't start the rendering a thousand times
-    
+
     animate();
 });
 
