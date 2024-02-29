@@ -4,7 +4,7 @@
 ## Controls 🎮
 
 | Controls         	| AZERTY 	| QWERTY 	|
-|:------------------:	|:--------:	|:--------:	|
+|:----------------:	|:--------:	|:--------:	|
 | Forward          	| Z      	| W      	|
 | Left             	| Q      	| A      	|
 | Backward         	| S      	| S      	|
@@ -17,3 +17,10 @@
 | Soft Chunk CHeck 	| C      	| C      	|
 | Toggle Wireframe 	| X      	| X      	|
 | Reset Chunks     	| V      	| V      	|
+
+---
+
+## Screenshots 🖼️
+![1](./res/screenshots/1.png)
+![1](./res/screenshots/2.png)
+![1](./res/screenshots/3.png)
