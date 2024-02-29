@@ -380,6 +380,7 @@ function animate() {
 document.addEventListener('keydown', (event) => {if (event.key == 'v') {active_chunks.forEach(chunk => {
                                                                             chunk.remove()
                                                                         });
+                                                                        active_chunks = [];
                                                                         PositionChunkCreation(camera, true);}}, false);
 
 
