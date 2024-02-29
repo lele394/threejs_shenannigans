@@ -5,14 +5,14 @@
 
 | Controls         	| AZERTY 	| QWERTY 	|
 |:------------------:	|:--------:	|:--------:	|
+| Forward          	| Z      	| W      	|
+| Left             	| Q      	| A      	|
+| Backward         	| S      	| S      	|
+| Right            	| D      	| D      	|
+| Turn Left        	| A      	| Q      	|
+| Turn Right       	| E      	| E      	|
 | Up               	| R      	| R      	|
 | Down             	| F      	| F      	|
-| Right            	| D      	| D      	|
-| Left             	| Q      	| A      	|
-| Forward          	| Z      	| W      	|
-| Backward         	| S      	| S      	|
-| Turn Right       	| E      	| E      	|
-| Turn Left        	| A      	| Q      	|
 | Open settings    	| Space  	| Space  	|
 | Soft Chunk CHeck 	| C      	| C      	|
 | Toggle Wireframe 	| X      	| X      	|
