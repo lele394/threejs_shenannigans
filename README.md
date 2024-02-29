@@ -5,8 +5,7 @@ Liking what you see? drop me a  <a class="github-button" href="https://github.co
 
 Wanna know how it'll go? <a class="github-button" href="https://github.com/lele394/threejs_shenannigans/subscription" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-eye" data-size="large" data-show-count="true" aria-label="Watch lele394/threejs_shenannigans on GitHub">Watch</a> it!
 
-Something is wrong? open an <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/lele394/threejs_shenannigans/issues" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-issue-opened" data-size="large" data-show-count="true" aria-label="Issue lele394/threejs_shenannigans on GitHub">Issue</a> !
+Something is wrong? open an <a class="github-button" href="https://github.com/lele394/threejs_shenannigans/issues" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-issue-opened" data-size="large" data-show-count="true" aria-label="Issue lele394/threejs_shenannigans on GitHub">Issue</a> !
 
 
 ## Controls 🎮
