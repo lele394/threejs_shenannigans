@@ -1,14 +1,13 @@
 # [See it in action instead of reading it!](https://lele394.github.io/threejs_shenannigans/)
 ---
+<div align = center style="display: flex; justify-content: space-evenly;">
 
-Liking what you see? drop me a  <a class="github-button" href="https://github.com/lele394/threejs_shenannigans" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star lele394/threejs_shenannigans on GitHub">Star</a>!
+![stars](https://img.shields.io/github/stars/lele394/threejs_shenannigans?style=for-the-badge&labelColor=333A73&color=333A73)
 
-Wanna know how it'll go? <a class="github-button" href="https://github.com/lele394/threejs_shenannigans/subscription" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-eye" data-size="large" data-show-count="true" aria-label="Watch lele394/threejs_shenannigans on GitHub">Watch</a> it!
+![issues](https://img.shields.io/github/issues/lele394/threejs_shenannigans?style=for-the-badge&labelColor=387ADF&color=387ADF)
 
-Something is wrong? open an 
-
-<a class="github-button" href="https://github.com/lele394/threejs_shenannigans/issues" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-issue-opened" data-size="large" data-show-count="true" aria-label="Issue lele394/threejs_shenannigans on GitHub">Issue</a>
-
+![issues](https://img.shields.io/github/watchers/lele394/threejs_shenannigans?style=for-the-badge&labelColor=50C4ED&color=50C4ED)
+</div>
 
 ## Controls 🎮
 
