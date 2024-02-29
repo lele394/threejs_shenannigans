@@ -9,6 +9,13 @@
 
 *<p align="center" style="font-style: italic; font-size: .75rem; margin: 0;"> Like what you see? drop me a star!</p>*
 
+---
+## See it in video 📺
+
+[![Little red riding hood](./res/screenshots/vid_thumbnail.png)](https://www.youtube.com/watch?v=XkuOc8BV8z0 "Video Demo. Click To Watch!")
+
+
+---
 
 ## Controls 🎮
 
