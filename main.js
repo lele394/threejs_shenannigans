@@ -440,6 +440,7 @@ const button = document.getElementById("start_generation");
 button.addEventListener("click", function() {
     console.log("Starting generation");
 
+    PositionChunkCreation(camera); // generates chunk once
     button.disabled = true; // disables button so people don't start the rendering a thousand times
 
     animate();
