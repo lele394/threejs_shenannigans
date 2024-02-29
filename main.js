@@ -376,13 +376,16 @@ function animate() {
 //document.addEventListener('keydown', (event) => animate(), false);
 
 
-// manual chunk check
+// manual chunk check reset
 document.addEventListener('keydown', (event) => {if (event.key == 'v') {active_chunks.forEach(chunk => {
                                                                             chunk.remove()
                                                                         });
                                                                         active_chunks = [];
                                                                         PositionChunkCreation(camera, true);}}, false);
 
+
+// manual soft check
+document.addEventListener('keydown', (event) => {if (event.key == 'c') {PositionChunkCreation(camera, true);}}, false);
 
 // wireframe toogle
 document.addEventListener('keydown', (event) => {if (event.key == 'x') { render_settings.wireframe = ! render_settings.wireframe;
