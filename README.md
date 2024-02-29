@@ -7,7 +7,7 @@ Wanna know how it'll go? <a class="github-button" href="https://github.com/lele3
 
 Something is wrong? open an 
 
-<a class="github-button" href="https://github.com/lele394/threejs_shenannigans/issues" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-issue-opened" data-size="large" data-show-count="true" aria-label="Issue lele394/threejs_shenannigans on GitHub">Issue</a> !
+<a class="github-button" href="https://github.com/lele394/threejs_shenannigans/issues" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-issue-opened" data-size="large" data-show-count="true" aria-label="Issue lele394/threejs_shenannigans on GitHub">Issue</a>
 
 
 ## Controls 🎮
