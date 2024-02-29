@@ -21,6 +21,26 @@
 ---
 
 ## Screenshots 🖼️
+
+
+<p align="center" style="font-style: italic; font-size: .75rem; margin: 0;">  
+Fully generated Mandelbulb sphere.
+</p>
+
 ![1](./res/screenshots/1.png)
-![1](./res/screenshots/2.png)
-![1](./res/screenshots/3.png)
+
+
+<br>
+<p align="center" style="font-style: italic; font-size: .75rem; margin: 0;">  
+random blob from appearing when surrounding chunks are not generated.
+</p>
+
+![2](./res/screenshots/2.png)
+
+
+<br>
+<p align="center" style="font-style: italic; font-size: .75rem; margin: 0;">  
+Partially generated Mandelbulb.
+</p>
+
+![3](./res/screenshots/3.png)
