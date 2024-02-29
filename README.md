@@ -6,8 +6,9 @@
 [![issues]][#]
 [![watchers]][#]
 
-
-
+<p align="center" style="font-style: italic; font-size: .75rem; margin: 0;">  
+Like what you see? drop me a star!
+</p>
 </div>
 
 
