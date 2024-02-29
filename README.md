@@ -1,23 +1,13 @@
 # [See it in action instead of reading it!](https://lele394.github.io/threejs_shenannigans/)
 ---
-<div align="center" style="display: flex; justify-content: space-evenly;">
-    <span>
+<div align = center style="display: flex; justify-content: space-evenly; flex-direction: row;">
 
-        ![stars](https://img.shields.io/github/stars/lele394/threejs_shenannigans?style=for-the-badge&labelColor=333A73&color=333A73)
+    ![stars](https://img.shields.io/github/stars/lele394/threejs_shenannigans?style=for-the-badge&labelColor=333A73&color=333A73)
 
-    </span>
-    <span>
+    ![issues](https://img.shields.io/github/issues/lele394/threejs_shenannigans?style=for-the-badge&labelColor=387ADF&color=387ADF)
 
-        ![issues](https://img.shields.io/github/issues/lele394/threejs_shenannigans?style=for-the-badge&labelColor=387ADF&color=387ADF)
-
-    </span>
-    <span>
-
-        ![issues](https://img.shields.io/github/watchers/lele394/threejs_shenannigans?style=for-the-badge&labelColor=50C4ED&color=50C4ED)
-        
-    </span>
+    ![issues](https://img.shields.io/github/watchers/lele394/threejs_shenannigans?style=for-the-badge&labelColor=50C4ED&color=50C4ED)
 </div>
-
 
 ## Controls 🎮
 
