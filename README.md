@@ -22,10 +22,10 @@
 
 ## A few words ✍️
 
-##### Introduction
+#### Introduction
 Hi, I'ml Léo, I like creating a bunch of stuff by smashing my keyboard. This project is part of my journey in 3D graphics. I've wanted to implement by myself the [Marching Cube](https://en.wikipedia.org/wiki/Marching_cubes) algorithm. I cannot state how much [this video](https://www.youtube.com/watch?v=KvwVYJY_IZ4)  helped me in debugging my code, I'm also using [Deadlock's triangulation table](https://pastebin.com/6TN46s9p).
 
-##### Why do that
+#### Why do that
 
 I've wanted to implement that algorithm due to a few games based on voxels that I always really liked :
  - [Astroneer](https://store.steampowered.com/app/361420/ASTRONEER/).
@@ -34,7 +34,7 @@ I've wanted to implement that algorithm due to a few games based on voxels that 
  - [Space Engineers](https://store.steampowered.com/app/244850/Space_Engineers/) asteroids.
  - And of course, everyone's favorite cube game, [Minecraft](https://en.wikipedia.org/wiki/Minecraft).
 
-##### Current features
+#### Current features
 
 Currently, the demo has a working camera that you can control using the listed keybinds below.
 You can toggle the wireframe by pressing X and reset chunks with V. Note that doing so will regenerate all the active chunks. <br>
@@ -42,10 +42,10 @@ If your computer allows it, you can enable the auto chunk check to always genera
 Web workers are terminated if they are currently working on chunks that are no longer used, in order to avoid computations on chunks that won't be used. <br>
 If the auto chunk check is not enabled (disabled by default), you can press C to refresh the active chunk list to chunks around you. <br>
 
-##### Precautions with chunk radius
+#### Precautions with chunk radius
 Please be careful when upping the chunk radius. It is generally better to increase the size of a chunk instead of teh radius, as each chunk will spawn a worker. A high radius leads to sometimes absurd amounts of workers; I do not recommend going past 5, which already spawns 515 of them.
 
-##### Issues in Chrome and Opera
+#### Issues in Chrome and Opera
 I'm aware of very bad performance in Chrome and Opera, however I do not think I have much control on that, though I'll look into it. No issues spotted running the demo on Firefox with a beefy machine. My setup runs an hexacore i5-10400 and a GTX-1660S and loads it pretty fast.
 
 
