@@ -1,15 +1,13 @@
 # [See it in action instead of reading it!](https://lele394.github.io/threejs_shenannigans/)
 ---
-*<div align="center" >
+<div align="center" >
 
 [![stars]][#]
 [![issues]][#]
 [![watchers]][#]
+</div>
 
-<p align="center" style="font-style: italic; font-size: .75rem; margin: 0;">  
-Like what you see? drop me a star!
-</p>
-</div>*
+*<p align="center" style="font-style: italic; font-size: .75rem; margin: 0;"> Like what you see? drop me a star!</p>*
 
 
 ## Controls 🎮
